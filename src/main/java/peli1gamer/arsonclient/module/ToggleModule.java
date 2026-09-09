@@ -13,7 +13,9 @@ public abstract class ToggleModule implements Module {
             else onDisable();
         } catch (Throwable t) {
             enabled = !value;
-            throw t;
+            if (t instanceof RuntimeException runtime) throw runtime;
+            if (t instanceof Error error) throw error;
+            throw new RuntimeException(t);
         }
     }
 }
