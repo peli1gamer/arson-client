@@ -57,7 +57,7 @@ public final class ArsonClient implements ClientModInitializer {
                 Button button = Button.builder(Component.literal("Arson Client"), ignored -> ArsonGui.open())
                     .bounds(x, y, width, 20)
                     .build();
-                Screens.getWidgets(screen).add(button);
+                Screens.getButtons(screen).add(button);
             }
         });
 
