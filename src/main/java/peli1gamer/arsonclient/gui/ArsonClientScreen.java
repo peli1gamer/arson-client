@@ -2,6 +2,7 @@ package peli1gamer.arsonclient.gui;
 
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.input.MouseButtonEvent;
 import net.minecraft.network.chat.Component;
 import peli1gamer.arsonclient.ArsonClient;
 import peli1gamer.arsonclient.module.Module;
@@ -71,8 +72,11 @@ public final class ArsonClientScreen extends Screen {
         return String.valueOf(setting.get());
     }
 
-    @Override public boolean mouseClicked(double mx, double my, int button) {
-        if (button != 0) return super.mouseClicked(mx, my, button);
+    @Override public boolean mouseClicked(MouseButtonEvent event, boolean doubleClick) {
+        double mx = event.x();
+        double my = event.y();
+        int button = event.button();
+        if (button != 0) return super.mouseClicked(event, doubleClick);
 
         if (controller.overlay().open()) {
             int left = width / 2 - 190, top = height / 2 - 150;
@@ -114,7 +118,7 @@ public final class ArsonClientScreen extends Screen {
             }
             cardY += 50;
         }
-        return super.mouseClicked(mx, my, button);
+        return super.mouseClicked(event, doubleClick);
     }
 
     @SuppressWarnings({"unchecked", "rawtypes"})
@@ -124,7 +128,8 @@ public final class ArsonClientScreen extends Screen {
         else if (setting instanceof DoubleSetting d) d.set(d.get() + d.step() > d.max() ? d.min() : d.get() + d.step());
         else if (setting instanceof EnumSetting e) {
             Object[] values = e.values();
-            int next = (e.get().ordinal() + 1) % values.length;
+            Enum<?> current = (Enum<?>) e.get();
+            int next = (current.ordinal() + 1) % values.length;
             e.set((Enum) values[next]);
         }
     }
