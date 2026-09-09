@@ -18,6 +18,7 @@ import peli1gamer.arsonclient.module.impl.BlockEspModule;
 import peli1gamer.arsonclient.module.impl.RetaliationTargetModule;
 import peli1gamer.arsonclient.module.impl.SprintModule;
 import peli1gamer.arsonclient.module.impl.FullbrightModule;
+import peli1gamer.arsonclient.module.impl.TriggerBotModule;
 import peli1gamer.arsonclient.target.TargetManager;
 import peli1gamer.arsonclient.target.TargetTracker;
 
@@ -37,6 +38,7 @@ public final class ArsonClient implements ClientModInitializer {
         MODULES.register(new RetaliationTargetModule());
         MODULES.register(new SprintModule());
         MODULES.register(new FullbrightModule());
+        MODULES.register(new TriggerBotModule());
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             TARGETS.tick();
