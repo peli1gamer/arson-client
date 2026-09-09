@@ -4,8 +4,10 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.fabricmc.fabric.api.client.screen.v1.ScreenEvents;
+import net.fabricmc.fabric.api.client.screen.v1.Screens;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.TitleScreen;
+import net.minecraft.network.chat.Component;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import peli1gamer.arsonclient.gui.ArsonGui;
@@ -52,10 +54,10 @@ public final class ArsonClient implements ClientModInitializer {
                 int width = 120;
                 int x = 8;
                 int y = scaledHeight - 28;
-                screen.addRenderableWidget(Button.builder(
-                    net.minecraft.network.chat.Component.literal("Arson Client"),
-                    button -> ArsonGui.open()
-                ).bounds(x, y, width, 20).build());
+                Button button = Button.builder(Component.literal("Arson Client"), ignored -> ArsonGui.open())
+                    .bounds(x, y, width, 20)
+                    .build();
+                Screens.getWidgets(screen).add(button);
             }
         });
 
