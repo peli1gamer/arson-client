@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import peli1gamer.arsonclient.module.ModuleManager;
 import peli1gamer.arsonclient.module.impl.AutoTotemModule;
-import peli1gamer.arsonclient.module.impl.ElytraFlyModule;
+import peli1gamer.arsonclient.module.impl.ElytraFlyModule;\nimport peli1gamer.arsonclient.module.impl.EntityEspModule;\nimport peli1gamer.arsonclient.module.impl.BlockEspModule;\nimport peli1gamer.arsonclient.module.impl.RetaliationTargetModule;
 import peli1gamer.arsonclient.target.TargetManager;
 
 public final class ArsonClient implements ClientModInitializer {
@@ -16,7 +16,7 @@ public final class ArsonClient implements ClientModInitializer {
     private static final TargetManager TARGETS = new TargetManager();
     @Override public void onInitializeClient() {
         MODULES.register(new AutoTotemModule());
-        MODULES.register(new ElytraFlyModule());
+        MODULES.register(new ElytraFlyModule());\n        MODULES.register(new EntityEspModule());\n        MODULES.register(new BlockEspModule());\n        MODULES.register(new RetaliationTargetModule());
         ClientTickEvents.END_CLIENT_TICK.register(client -> { TARGETS.tick(); MODULES.tick(); });
         LOGGER.info("Arson Client core initialized with {} implemented modules", MODULES.all().size());
     }
