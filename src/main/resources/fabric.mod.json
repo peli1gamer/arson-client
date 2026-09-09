@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "arson-client",
+  "version": "${version}",
+  "name": "Arson Client",
+  "description": "A client-side Fabric utility client focused on stability and implemented features.",
+  "authors": ["peli1gamer"],
+  "environment": "client",
+  "entrypoints": {
+    "client": ["peli1gamer.arsonclient.ArsonClient"]
+  },
+  "depends": {
+    "fabricloader": ">=0.18.1",
+    "fabric-api": "0.141.6+1.21.11",
+    "minecraft": "1.21.11"
+  }
+}
